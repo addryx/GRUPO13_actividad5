@@ -3,8 +3,8 @@ package com.tienda.modelo.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tienda.modelo.beans.Direccione;
-import com.tienda.modelo.repository.DireccioneRepository;
+import com.tienda.modelo.entities.Direccione;
+import com.tienda.repository.DireccioneRepository;
 
 @Service
 public class DireccioneDaoImplMy8 implements IntDireccioneDao{

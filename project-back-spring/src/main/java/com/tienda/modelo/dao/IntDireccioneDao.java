@@ -1,6 +1,6 @@
 package com.tienda.modelo.dao;
 
-import com.tienda.modelo.beans.Direccione;
+import com.tienda.modelo.entities.Direccione;
 
 public interface IntDireccioneDao {
 	

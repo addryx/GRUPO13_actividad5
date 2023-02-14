@@ -3,8 +3,8 @@ package com.tienda.modelo.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tienda.modelo.beans.Tarjeta;
-import com.tienda.modelo.repository.TarjetaRepository;
+import com.tienda.modelo.entities.Tarjeta;
+import com.tienda.repository.TarjetaRepository;
 
 @Service
 public class TarjetaDaoImplMy8 implements IntTarjetaDao {

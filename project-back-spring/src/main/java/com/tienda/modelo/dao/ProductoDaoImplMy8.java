@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tienda.modelo.beans.Producto;
-import com.tienda.modelo.repository.ProductoRepository;
+import com.tienda.modelo.entities.Producto;
+import com.tienda.repository.ProductoRepository;
 
 @Service
 public class ProductoDaoImplMy8 implements IntProductoDao{
