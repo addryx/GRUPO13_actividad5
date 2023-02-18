@@ -1,7 +1,9 @@
-package com.tienda.modelo.entities;
+package com.tienda.modelo.beans;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -178,6 +180,13 @@ public class Usuario implements Serializable {
 	public void setTarjetas(List<Tarjeta> tarjetas) {
 		this.tarjetas = tarjetas;
 	}
+	
+	public void addRole(Role role) {
+        if (roles == null) {
+            roles = new ArrayList<>();
+        	roles.add(role);
+        }
+    }
 
 	@Override
 	public String toString() {

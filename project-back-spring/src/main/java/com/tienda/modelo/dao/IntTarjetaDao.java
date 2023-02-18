@@ -1,6 +1,6 @@
 package com.tienda.modelo.dao;
 
-import com.tienda.modelo.entities.Tarjeta;
+import com.tienda.modelo.beans.Tarjeta;
 
 public interface IntTarjetaDao {
 

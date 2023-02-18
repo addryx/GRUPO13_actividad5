@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tienda.modelo.beans.Producto;
 import com.tienda.modelo.dao.IntProductoDao;
-import com.tienda.modelo.entities.Producto;
 
 @Controller
 @RequestMapping("/app/producto")

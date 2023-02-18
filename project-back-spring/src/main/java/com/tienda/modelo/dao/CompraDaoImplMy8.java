@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tienda.modelo.entities.Compra;
+import com.tienda.modelo.beans.Compra;
 import com.tienda.repository.CompraRepository;
 
 @Service

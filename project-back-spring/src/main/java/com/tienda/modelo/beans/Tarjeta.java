@@ -1,4 +1,4 @@
-package com.tienda.modelo.entities;
+package com.tienda.modelo.beans;
 
 import java.io.Serializable;
 import jakarta.persistence.*;

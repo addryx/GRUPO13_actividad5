@@ -2,7 +2,7 @@ package com.tienda.modelo.dao;
 
 import java.util.List;
 
-import com.tienda.modelo.entities.Compra;
+import com.tienda.modelo.beans.Compra;
 
 public interface IntCompraDao {
 	/*

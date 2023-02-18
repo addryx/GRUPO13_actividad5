@@ -2,7 +2,7 @@ package com.tienda.modelo.service;
 
 import java.util.List;
 
-import com.tienda.modelo.entities.Producto;
+import com.tienda.modelo.beans.Producto;
 
 public interface ProductoService {
 

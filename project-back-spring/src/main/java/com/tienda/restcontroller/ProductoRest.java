@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tienda.modelo.entities.Producto;
+import com.tienda.modelo.beans.Producto;
 import com.tienda.modelo.service.ProductoService;
 
 @RestController
