@@ -67,13 +67,13 @@ public class ProductoDaoImplMy8 implements IntProductoDao{
 	}
 
 	@Override
-	public List<Producto> buscadorProductos(Producto producto) {
-		try {
-            return this.prepo.buscadorProductos(producto);
-        } catch ( Exception e ) {
-            e.printStackTrace();
-            return null;
-        }
+	public List<Producto> buscadorProductos(String nombre) {
+		return prepo.buscadorProductos(nombre);
+	}
+
+	@Override
+	public List<Producto> filtroProductos(String nombre) {
+		return prepo.filtroProductos(nombre);
 	}
 
 }

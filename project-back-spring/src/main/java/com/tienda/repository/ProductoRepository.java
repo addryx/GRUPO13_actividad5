@@ -10,7 +10,10 @@ import com.tienda.modelo.beans.Producto;
 
 public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 	
-	@Query( value = "select * from productos where nombre like '%?%' or descripcion like '%?%'", nativeQuery = true )
-    List<Producto> buscadorProductos(Producto producto);
-		
+	@Query("SELECT p from Producto p where p.nombre LIKE %?1%")
+    List<Producto> buscadorProductos(String nombre);
+	
+	@Query("SELECT p from Producto p order by p.nombre asc")
+    List<Producto> filtroProductos(String nombre);
+
 }

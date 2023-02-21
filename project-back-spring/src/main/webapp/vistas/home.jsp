@@ -37,7 +37,6 @@
 				<sec:authorize access="hasAnyAuthority('ROLE_CLIENTE')">
 					<li class="nav-item"><a class="nav-link" href="/tarjetas/todos">Tarjetas</a></li>
 					<li class="nav-item"><a class="nav-link" href="/direcciones/todos">Direcciones</a></li>
-					<li class="nav-item"><a class="nav-link" href="/">Carrito</a></li>
 				</sec:authorize>
 				
 				<sec:authorize access="!isAuthenticated()">
@@ -45,11 +44,11 @@
 					<li class="nav-item"><a class="nav-link" href="/registro">Registrarse</a></li>
 				</sec:authorize>
 				
+				<li class="nav-item"><a class="nav-link" href="/">Carrito</a></li>
+				
 				<sec:authorize access="isAuthenticated()">
 					<li class="nav-item"><a class="nav-link" href="/logout">Cerrar sesión</a></li>
 				</sec:authorize>
-				
-				<li class="nav-item"><a class="nav-link" href="/">Carrito</a></li>
 				
 			</ul>
 		</div>

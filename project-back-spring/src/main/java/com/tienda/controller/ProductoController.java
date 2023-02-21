@@ -3,6 +3,7 @@ package com.tienda.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,9 +62,9 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/busqueda")
-	public String busquedaProducto(Model model, Producto producto){
-		List<Producto> lista = pdao.buscadorProductos(producto);
-		model.addAttribute("catalogoFiltrado", lista);
+	public String busquedaProducto(Model model, @Param("nombre") String nombre){
+		List<Producto> lista = pdao.buscadorProductos(nombre);
+		model.addAttribute("listaCatalogoBusqueda", lista);
 		return "/catalogoBusqueda";
 	}
 }

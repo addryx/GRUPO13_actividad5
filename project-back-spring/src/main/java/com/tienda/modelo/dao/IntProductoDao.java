@@ -11,6 +11,7 @@ public interface IntProductoDao {
 	List<Producto> buscarTodos();
 	int borrarProducto(int idProducto);
 	int modificarProducto(Producto producto);
-	List<Producto> buscadorProductos(Producto producto);
+	List<Producto> buscadorProductos(String nombre);
+	List<Producto> filtroProductos(String nombre);
 
 }

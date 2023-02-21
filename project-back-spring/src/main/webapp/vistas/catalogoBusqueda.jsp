@@ -18,12 +18,24 @@
 	<jsp:include page="home.jsp"></jsp:include>
 
 	<div class="container">
+		<br>
 		<h1 class="text-primary">Catálogo de productos</h1>
 		<h1>${mensaje }</h1>
 		
+		<br>
 		<form action="/producto/busqueda" method="post">
 			<input type="text" name="nombre" placeholder="Búsqueda..">
 			<input type="submit" value="Buscar">
+			<input type="reset" value="Limpiar">
+		</form>
+		<br>
+		<form action="/producto/filtro" method="post">
+			<select name="filtro">
+				<option value="" selected></option>
+				<option value="alfabeticamente">Alfabéticamente</option>
+				<option value="precio">Precio</option>
+			</select>
+			<input type="submit" value="Filtrar">
 		</form>
 		<br>
 		
@@ -37,7 +49,7 @@
 			<th>Id Producto</th>
 			<th>Nombre</th>
 			<th></th>
-			<c:forEach var="ele" items="${catalogoBusqueda }">
+			<c:forEach var="ele" items="${listaCatalogoBusqueda }">
 				<tr>
 					<td>${ele.idProducto }</td>
 					<td>${ele.nombre }</td>
