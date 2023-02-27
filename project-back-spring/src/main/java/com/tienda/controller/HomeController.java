@@ -1,5 +1,6 @@
 package com.tienda.controller;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -8,12 +9,15 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -35,8 +39,6 @@ public class HomeController {
 	IntRoleDao rdao;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	@Autowired
-	private DateTimeFormatter dateFormatter;
 
 	@GetMapping("/")
 	public String verHome(Model model, Authentication aut) {
@@ -63,12 +65,9 @@ public class HomeController {
 	@PostMapping("/registro")
 	public String proregistrar(Model model, Usuario usuario, @RequestParam("fechaNacimiento") String fechaNacimiento, RedirectAttributes ratt) {
 
-		// usuario.setIdUsuario(usuario.getIdUsuario());
 		usuario.setNombre(usuario.getNombre());
 		usuario.setApellidos(usuario.getApellidos());
-		Date fechaNacimientoDate = Date.parse(fechaNacimiento, dateFormatter);
-		usuario.setFechaNacimiento(fechaNacimientoLocalDate);
-		// usuario.setFechaNacimiento(new Date());
+		usuario.setFechaNacimiento(usuario.getFechaNacimiento());
 		usuario.setEmail(usuario.getEmail());
 		usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
 		usuario.setEnabled(1);
@@ -81,6 +80,13 @@ public class HomeController {
 			model.addAttribute("mensaje", "Ya existe este usuario.");
 			return "redirect:/registro";
 		}
+	}
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(
+	            dateFormat, false));
 	}
 
 }
