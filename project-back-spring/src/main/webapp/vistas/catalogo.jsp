@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -21,27 +22,23 @@
 		<br>
 		<h1 class="text-primary">Catálogo de productos</h1>
 		<h1>${mensaje }</h1>
-		
+
 		<br>
 		<form action="/producto/busqueda" method="post">
-			<input type="text" name="nombre" placeholder="Búsqueda..">
-			<input type="submit" value="Buscar">
-			<input type="reset" value="Limpiar">
+			<input type="text" name="nombre" placeholder="Búsqueda.."> 
+			<input type="submit" value="Buscar"> 
+			<input type="button" onclick=limpiarCampos() value="Limpiar">
 		</form>
-		<br>
-		<form action="/producto/filtro" method="post">
-			<select name="filtro">
-				<option value="" selected></option>
-				<option value="alfabeticamente">Alfabéticamente</option>
-				<option value="precio">Precio</option>
-			</select>
-			<input type="submit" value="Filtrar">
-		</form>
-		<br>
-		
-		<sec:authorize access="hasAnyAuthority('ROLE_ADMINISTRADOR')">
+		<form action="/producto/filtrar" method="post">
 			<br>
-			<a href="/producto/alta" class="btn btn-primary btn-sm">Nuevo Producto</a></td>
+			<input type="submit" value="Ordenar alfabéticamente"> 
+		</form>
+		<br>
+
+		<sec:authorize access="hasAnyAuthority('ROLE_ADMON')">
+			<a href="/producto/alta" class="btn btn-primary btn-sm">Nuevo Producto</a>
+			<br>
+			</td>
 			<br>
 		</sec:authorize>
 
@@ -49,15 +46,18 @@
 			<th>Id Producto</th>
 			<th>Nombre</th>
 			<th></th>
+			<th></th>
 			<c:forEach var="ele" items="${listaTodosProductos }">
 				<tr>
 					<td>${ele.idProducto }</td>
 					<td>${ele.nombre }</td>
 					<td><a href="/producto/verDetalle/${ele.idProducto}" class="btn btn-success btn-sm">Ver detalle</a> 
+					<td><a href="/producto/carrito/${ele.idProducto}" class="btn btn-success btn-sm">Añadir carrito</a>
 					
-					<sec:authorize access="hasAnyAuthority('ROLE_ADMINISTRADOR')">
+					<sec:authorize access="hasAnyAuthority('ROLE_ADMON')">
 							<a href="/producto/editar/${ele.idProducto}" class="btn btn-success btn-sm">Editar</a>
-							<a href="/producto/eliminar/${ele.idProducto}" class="btn btn-danger btn-sm">Eliminar</a></td>
+							<a href="/producto/eliminar/${ele.idProducto}" class="btn btn-danger btn-sm">Eliminar</a>
+							</td>
 					</sec:authorize>
 				</tr>
 			</c:forEach>
@@ -74,5 +74,13 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		function limpiarCampos() {
+			window.location = '/catalogo';
+		}
+	</script>
+
 </body>
+
 </html>

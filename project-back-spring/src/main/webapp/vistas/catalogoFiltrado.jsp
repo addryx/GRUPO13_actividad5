@@ -45,7 +45,7 @@
 			<th>Nombre</th>
 			<th></th>
 			<th></th>
-			<c:forEach var="ele" items="${listaCatalogoBusqueda }">
+			<c:forEach var="ele" items="${listaFiltrada }">
 				<tr>
 					<td>${ele.idProducto }</td>
 					<td>${ele.nombre }</td>

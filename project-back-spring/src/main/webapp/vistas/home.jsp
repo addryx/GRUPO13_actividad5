@@ -15,9 +15,9 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<sec:authentication property="name" />
-	<sec:authorize access="hasAuthority('ROLE_CLIENTE')">Usuario cliente</sec:authorize>
-	<sec:authorize access="hasAuthority('ROLE_ADMINISTRADOR')">Usuario administrador</sec:authorize>
+	<sec:authentication property="name"/>
+	<sec:authorize access="hasAuthority('ROLE_CLIENTE')">- Usuario cliente</sec:authorize>
+	<sec:authorize access="hasAuthority('ROLE_ADMON')">- Usuario administrador</sec:authorize>
 	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="/">Tienda de electrónica</a>
@@ -30,7 +30,7 @@
 				
 				<li class="nav-item"><a class="nav-link" href="/catalogo">Catálogo</a></li>
 				
-				<sec:authorize access="hasAnyAuthority('ROLE_ADMINISTRADOR')">
+				<sec:authorize access="hasAnyAuthority('ROLE_ADMON')">
 					<li class="nav-item"><a class="nav-link" href="/usuarios/todos">Clientes</a></li>
 				</sec:authorize>
 				

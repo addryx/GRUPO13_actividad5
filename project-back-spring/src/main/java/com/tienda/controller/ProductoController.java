@@ -67,4 +67,11 @@ public class ProductoController {
 		model.addAttribute("listaCatalogoBusqueda", lista);
 		return "/catalogoBusqueda";
 	}
+	
+	@PostMapping("/filtrar")
+	public String filtroProducto(Model model, @Param("valor") String valor){
+		List<Producto> lista = pdao.filtroProductos(valor);
+		model.addAttribute("listaFiltrada", lista);
+		return "/catalogoFiltrado";
+	}
 }

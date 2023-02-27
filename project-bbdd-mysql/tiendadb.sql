@@ -15,9 +15,7 @@ CREATE TABLE usuarios (
   fecha_nacimiento DATE NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
   contrasena VARCHAR(100) NOT NULL,
-  ENABLED INT NOT NULL DEFAULT 1,
-  id_rol INT NOT NULL,
-  FOREIGN KEY (id_rol) REFERENCES roles(id_rol)
+  ENABLED INT NOT NULL DEFAULT 1
 );
 
 -- Tabla "direcciones"
@@ -62,7 +60,6 @@ CREATE TABLE Compras (
     FOREIGN KEY (id_direccion) REFERENCES Direcciones(id_direccion),
     FOREIGN KEY (id_tarjeta) REFERENCES Tarjetas(id_tarjeta)
 );
-
 
 -- Tabla intermedia "usuarios_direcciones"
 CREATE TABLE usuarios_direcciones (
@@ -114,12 +111,12 @@ grant all privileges on tiendadb.* to  'utienda';
 INSERT INTO Roles (nombre_rol) VALUES ('ROLE_CLIENTE'), ('ROLE_ADMON');
 
 -- Tabla usuarios
-INSERT INTO usuarios (nombre, apellidos, fecha_nacimiento, email, contrasena, id_rol)
-VALUES ('Juan', 'Pérez', '1995-01-01', 'juan.perez@email.com', 'contrasena1', 1),
-       ('María', 'González', '1996-02-02', 'maria.gonzalez@email.com', 'contrasena2', 1),
-       ('Pedro', 'Rodríguez', '1997-03-03', 'pedro.rodriguez@email.com', 'contrasena3', 2),
-       ('Ana', 'Martínez', '1998-04-04', 'ana.martinez@email.com', 'contrasena4', 1),
-       ('Luis', 'Sánchez', '1999-05-05', 'luis.sanchez@email.com', 'contrasena5', 2);
+INSERT INTO usuarios (nombre, apellidos, fecha_nacimiento, email, contrasena)
+VALUES ('Juan', 'Pérez', '1995-01-01', 'juan.perez@email.com', 'contrasena1'),
+       ('María', 'González', '1996-02-02', 'maria.gonzalez@email.com', 'contrasena2'),
+       ('Pedro', 'Rodríguez', '1997-03-03', 'pedro.rodriguez@email.com', 'contrasena3'),
+       ('Ana', 'Martínez', '1998-04-04', 'ana.martinez@email.com', 'contrasena4'),
+       ('Luis', 'Sánchez', '1999-05-05', 'luis.sanchez@email.com', 'contrasena5');
        
 -- Tabla direcciones
 INSERT INTO direcciones (codigo_postal, localidad, calle, numero, piso, letra)
@@ -128,7 +125,6 @@ VALUES ('08001', 'Barcelona', 'Calle de las Flores', 5, 4, 'A'),
 		('08008', 'Barcelona', 'Calle del Mar', 8, 6, 'C'),
 		('08003', 'Barcelona', 'Calle de la Luna', 12, 2, 'D'),
 		('08006', 'Barcelona', 'Calle del Sol', 3, 5, 'A');
-
 
 -- Tabla tarjetas bancarias
 INSERT INTO tarjetas (numero_tarjeta, nombre_titular, fecha_caducidad, cvv)

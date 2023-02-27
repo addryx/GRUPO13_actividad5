@@ -1,5 +1,7 @@
 package com.tienda.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tienda.modelo.beans.Producto;
@@ -32,6 +35,8 @@ public class HomeController {
 	IntRoleDao rdao;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private DateTimeFormatter dateFormatter;
 
 	@GetMapping("/")
 	public String verHome(Model model, Authentication aut) {
@@ -56,24 +61,25 @@ public class HomeController {
 	}
 
 	@PostMapping("/registro")
-	public String proregistrar(Model model, Usuario usuario, RedirectAttributes ratt) {
+	public String proregistrar(Model model, Usuario usuario, @RequestParam("fechaNacimiento") String fechaNacimiento, RedirectAttributes ratt) {
 
-		usuario.setIdUsuario(usuario.getIdUsuario());
+		// usuario.setIdUsuario(usuario.getIdUsuario());
 		usuario.setNombre(usuario.getNombre());
 		usuario.setApellidos(usuario.getApellidos());
-		usuario.setFechaNacimiento(usuario.getFechaNacimiento());
+		Date fechaNacimientoDate = Date.parse(fechaNacimiento, dateFormatter);
+		usuario.setFechaNacimiento(fechaNacimientoLocalDate);
+		// usuario.setFechaNacimiento(new Date());
 		usuario.setEmail(usuario.getEmail());
-		usuario.setContrasena(usuario.getContrasena());
-		// usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
+		usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
 		usuario.setEnabled(1);
 		usuario.addRole(rdao.buscarRole(1));
 
 		if (udao.altaUsuario(usuario) == 0) {
-			ratt.addFlashAttribute("mensaje", "alta realizada");
+			ratt.addFlashAttribute("mensaje", "Alta realizada correctamente.");
 			return "redirect:/login";
 		} else {
-			model.addAttribute("mensaje", "ya existe como usuario");
-			return "/registro";
+			model.addAttribute("mensaje", "Ya existe este usuario.");
+			return "redirect:/registro";
 		}
 	}
 

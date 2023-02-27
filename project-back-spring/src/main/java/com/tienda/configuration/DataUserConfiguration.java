@@ -42,12 +42,13 @@ public class DataUserConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/", "/login", "/logout", "/registro", "/catalogo", "/producto/verDetalle/**", "/producto/busqueda").permitAll()
 
 				// Las autorizaciones sobre urls para ROLES
-				// .antMatchers("/producto/**").hasAnyAuthority("ROLE_CLIENTE", "ROLE_ADMON")
+				.antMatchers("/producto/**").hasAnyAuthority("ROLE_CLIENTE", "ROLE_ADMON")
 				.antMatchers("/usuarios/**").hasAnyAuthority("ROLE_ADMON").antMatchers("/app/perfiles/**")
 				.hasAnyAuthority("ROLE_ADMON").antMatchers("/app/tipos/**").hasAnyAuthority("ROLE_ADMON")
 
 				// Todas las demás URLs de la Aplicación requieren autenticación
 				.anyRequest().authenticated()
+				
 				// El formulario de Login no requiere autenticacion
 				.and().formLogin().permitAll();
 	}

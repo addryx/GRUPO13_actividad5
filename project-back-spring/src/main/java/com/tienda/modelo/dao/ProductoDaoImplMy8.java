@@ -72,8 +72,8 @@ public class ProductoDaoImplMy8 implements IntProductoDao{
 	}
 
 	@Override
-	public List<Producto> filtroProductos(String nombre) {
-		return prepo.filtroProductos(nombre);
+	public List<Producto> filtroProductos(String valor) {
+		return prepo.filtroAlfabetico(valor);
 	}
 
 }

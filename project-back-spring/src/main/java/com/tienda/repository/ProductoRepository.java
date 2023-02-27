@@ -14,6 +14,6 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer>{
     List<Producto> buscadorProductos(String nombre);
 	
 	@Query("SELECT p from Producto p order by p.nombre asc")
-    List<Producto> filtroProductos(String nombre);
+    List<Producto> filtroAlfabetico(String valor);
 
 }

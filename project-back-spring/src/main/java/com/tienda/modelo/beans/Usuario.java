@@ -1,6 +1,8 @@
 package com.tienda.modelo.beans;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;
