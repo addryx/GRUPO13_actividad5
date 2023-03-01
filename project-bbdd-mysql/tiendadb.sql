@@ -99,10 +99,6 @@ CREATE TABLE productos_compra (
     FOREIGN KEY (id_producto) REFERENCES Productos(id_producto)
 );
 
-create user 'utienda' identified by 'utienda';
-grant all privileges on tiendadb.* to  'utienda';
--- drop user 'utienda'@'%';
-
 -- -----------------------
 -- INSERTS --
 -- -----------------------
@@ -167,3 +163,7 @@ INSERT INTO productos_compra (id_compra, id_producto, unidades, precio)
 VALUES (1, 1, 2, 20.5),
        (1, 2, 3, 15.3),
        (2, 3, 1, 50.0);
+
+create user 'utienda' identified by 'utienda';
+grant all privileges on tiendadb.* to 'utienda';
+-- drop user 'utienda'@'%';
