@@ -13,5 +13,6 @@ public interface IntProductoDao {
 	int modificarProducto(Producto producto);
 	List<Producto> buscadorProductos(String nombre);
 	List<Producto> filtroProductos(String nombre);
+	List<Producto> precioProducto(int idProducto);
 
 }

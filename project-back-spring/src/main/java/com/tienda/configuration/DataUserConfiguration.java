@@ -39,7 +39,7 @@ public class DataUserConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/error").permitAll()
 
 				// Las vistas públicas no requieren autenticación
-				.antMatchers("/", "/login", "/logout", "/registro", "/catalogo", "/producto/verDetalle/**", "/producto/busqueda").permitAll()
+				.antMatchers("/", "/rest/**", "/login", "/logout", "/registro", "/catalogo", "/producto/verDetalle/**", "/producto/busqueda", "/producto/filtrar").permitAll()
 
 				// Las autorizaciones sobre urls para ROLES
 				.antMatchers("/producto/**").hasAnyAuthority("ROLE_CLIENTE", "ROLE_ADMON")

@@ -44,19 +44,19 @@ public class Usuario implements Serializable {
 	private List<Compra> compras;
 
 	// bi-directional many-to-many association to Role
-	@ManyToMany
+	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "usuario_roles", joinColumns = { @JoinColumn(name = "id_usuario") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_rol") })
 	private List<Role> roles;
 
 	// bi-directional many-to-many association to Direccione
-	@ManyToMany
+	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "usuarios_direcciones", joinColumns = { @JoinColumn(name = "id_usuario") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_direccion") })
 	private List<Direccione> direcciones;
 
 	// bi-directional many-to-many association to Tarjeta
-	@ManyToMany
+	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "usuarios_tarjetas", joinColumns = { @JoinColumn(name = "id_usuario") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_tarjeta") })
 	private List<Tarjeta> tarjetas;

@@ -10,6 +10,7 @@ import com.tienda.repository.ProductoRepository;
 
 @Service
 public class ProductoDaoImplMy8 implements IntProductoDao{
+	
 	@Autowired
 	ProductoRepository prepo;
 
@@ -74,6 +75,16 @@ public class ProductoDaoImplMy8 implements IntProductoDao{
 	@Override
 	public List<Producto> filtroProductos(String valor) {
 		return prepo.filtroAlfabetico(valor);
+	}
+
+	@Override
+	public List<Producto> precioProducto(int idProducto) {
+		try {
+			return this.prepo.precioProducto(idProducto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
