@@ -1,11 +1,13 @@
 package com.tienda.modelo.beans;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
-
 
 /**
  * The persistent class for the productos database table.
@@ -31,6 +33,7 @@ public class Producto implements Serializable {
 	private int stock;
 
 	//bi-directional many-to-one association to ProductosCompra
+	@JsonIgnore
 	@OneToMany(mappedBy="producto")
 	private List<ProductosCompra> productosCompras;
 	

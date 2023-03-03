@@ -1,5 +1,7 @@
 package com.tienda.modelo.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +38,16 @@ public class DireccioneDaoImplMy8 implements IntDireccioneDao{
 			e.printStackTrace();
 		}
 		return filas;
+	}
+
+	@Override
+	public List<Direccione> clientesPorLocalidad() {
+		try {
+			return drepo.clientesPorLocalidad();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            return null;
+        }
+		
 	}
 }

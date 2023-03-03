@@ -2,9 +2,11 @@ package com.tienda.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -13,44 +15,64 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tienda.modelo.beans.Usuario;
+import com.tienda.modelo.dao.IntRoleDao;
 import com.tienda.modelo.dao.IntUsuarioDao;
 
 @Controller
-@RequestMapping("/app/usuario")
+@RequestMapping("/usuario")
 public class UsuarioController {
+	
 	@Autowired
 	IntUsuarioDao udao;
 	
+	@Autowired
+	IntRoleDao rdao;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@GetMapping("/alta")
-	public String enviarFormAltaCliente () {
-		return "registrarClientes";
+	public String enviarFormAltaUsuario () {
+		return "formAltaUsuario";
 	}
 	
 	@PostMapping("/alta")
-	public String procesarFormulario(Model model, Usuario usuario) {
-		
-		System.out.println(usuario);
-		udao.altaUsuario(usuario);
-		System.out.println(usuario);
-		return "redirect:/";
+	public String proregistrar(Model model, Usuario usuario, @RequestParam("fechaNacimiento") String fechaNacimiento, RedirectAttributes ratt) {
+
+		usuario.addRole(rdao.buscarRole(2));
+		usuario.setNombre(usuario.getNombre());
+		usuario.setApellidos(usuario.getApellidos());
+		usuario.setFechaNacimiento(usuario.getFechaNacimiento());
+		usuario.setEmail(usuario.getEmail());
+		usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
+		usuario.setEnabled(1);
+
+		if (udao.altaUsuario(usuario) == 0) {
+			ratt.addFlashAttribute("mensaje", "Alta realizada correctamente.");
+			return "redirect:/usuarios";
+		} else {
+			model.addAttribute("mensaje", "Ya existe este usuario.");
+			return "redirect:/alta";
+		}
+	}
+	
+	@GetMapping("/ver/{id}")
+	public String verDatosUsuario (Model model, @PathVariable(name = "id") int idUsuario) {
+		Usuario usuario = udao.buscarUno(idUsuario);
+		model.addAttribute("usuario", usuario);
+		List<Usuario> lista = udao.datosUsuario(idUsuario);
+		model.addAttribute("datosUsuario", lista);
+		return "datosUsuario";
 	}
 	
 	@GetMapping("/eliminar/{id}")
 	public String eliminarUsuario(Model model, @PathVariable(name = "id") int idUsuario) {
-		
-		if (udao.bajaUsuario(idUsuario) == 1)
-			model.addAttribute("mensaje", "Usuario dado de baja correctamente.");
-		else
-			model.addAttribute("mensaje", "El usuario no se ha podido eliminar.");
-		return "forward:/";
-	}
-	
-	@GetMapping("/verTodos")
-	public String verUsuarios(Model model) {
-		model.addAttribute("mensaje", "Listado de usuarios.");
-		return "listadoUsuarios";
+		udao.bajaUsuario(idUsuario);
+		return "redirect:/usuarios";
 	}
 	
 	@InitBinder

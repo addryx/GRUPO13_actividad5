@@ -51,6 +51,13 @@ public class HomeController {
 		model.addAttribute("listaTodosProductos", lista);
 		return "catalogo";
 	}
+	
+	@GetMapping("/usuarios")
+	public String verUsuarios(Model model, Authentication aut) {
+		List<Usuario> lista = udao.buscarTodos();
+		model.addAttribute("listaTodosUsuarios", lista);
+		return "usuarios";
+	}
 
 	@GetMapping("/login")
 	public String procesarLogin(Authentication aut, Model model, HttpSession misesion) {

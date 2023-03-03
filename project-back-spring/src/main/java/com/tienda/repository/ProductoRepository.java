@@ -1,6 +1,7 @@
 package com.tienda.repository;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,6 +18,6 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer>{
     List<Producto> filtroAlfabetico(String valor);
 	
 	@Query("SELECT p.precio from Producto p where p.idProducto = ?1")
-    List<Producto> precioProducto(int idProducto);
+    BigDecimal precioProducto(int idProducto);
 
 }

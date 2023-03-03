@@ -70,4 +70,9 @@ public class UsuarioDaoImplMy8 implements IntUsuarioDao{
 		}
 		return filas;
 	}
+
+	@Override
+	public List<Usuario> datosUsuario(int idUsuario) {
+		return urepo.datosUsuario(idUsuario);
+	}
 }

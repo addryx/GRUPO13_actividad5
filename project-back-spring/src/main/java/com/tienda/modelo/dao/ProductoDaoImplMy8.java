@@ -1,5 +1,6 @@
 package com.tienda.modelo.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +30,11 @@ public class ProductoDaoImplMy8 implements IntProductoDao{
 
 	@Override
 	public Producto buscarUno(int codigo) {
-		// TODO Auto-generated method stub
 		return prepo.findById(codigo).orElse(null);
 	}
 
 	@Override
 	public List<Producto> buscarTodos() {
-		// TODO Auto-generated method stub
 		return prepo.findAll();
 	}
 
@@ -78,7 +77,7 @@ public class ProductoDaoImplMy8 implements IntProductoDao{
 	}
 
 	@Override
-	public List<Producto> precioProducto(int idProducto) {
+	public BigDecimal precioProducto(int idProducto) {
 		try {
 			return this.prepo.precioProducto(idProducto);
 		} catch (Exception e) {
