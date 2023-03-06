@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.tienda.modelo.beans.Direccione;
+import com.tienda.modelo.beans.Tarjeta;
 import com.tienda.modelo.beans.Usuario;
 import com.tienda.modelo.dao.IntRoleDao;
 import com.tienda.modelo.dao.IntUsuarioDao;
@@ -25,6 +27,9 @@ import com.tienda.modelo.dao.IntUsuarioDao;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
+	
+	@Autowired
+	Usuario user;
 	
 	@Autowired
 	IntUsuarioDao udao;
@@ -81,5 +86,24 @@ public class UsuarioController {
 	    binder.registerCustomEditor(Date.class, new CustomDateEditor(
 	            dateFormat, false));
 	}
+	//tarjetas
+	@GetMapping("/darAltaTarjeta")
+	public String altaTarjeta(){
+		return "insertarTarjeta";
+	}
 	
+	@PostMapping("/darAltaTarjeta")
+	public void altaTarjeta(Model model, Tarjeta tarjeta) {
+		user.addTarjeta(tarjeta);
+		}
+	
+	//direccion
+	@GetMapping("/darAltaDireccion")
+	public String altaDireccion(){
+		return "insertarDireccion";
+	}
+	@PostMapping("/darAltaTarjeta")
+	public void altaDireccion(Model model, Direccione direccion) {
+		user.addDireccion(direccion);
+		}
 }

@@ -189,7 +189,31 @@ public class Usuario implements Serializable {
         	roles.add(role);
         }
     }
-
+	//Esto se ha añadido para las tarjetas
+	public void addTarjeta(Tarjeta tarjeta) {
+		if(tarjetas == null)
+			tarjetas =  new ArrayList<>();
+		tarjetas.add(tarjeta);
+	}
+	
+	public void removeTarjeta(Tarjeta tarjeta) {
+		if (tarjetas == null)
+			tarjetas = new ArrayList<>();
+		tarjetas.remove(tarjeta);
+	}
+	//Esto se ha añadido para las direcciones
+	public void addDireccion(Direccione direccion) {
+		if (direcciones == null)
+			direcciones = new ArrayList<>();
+		direcciones.add(direccion);
+	}
+	
+	public void removeDireccion(Direccione direccion) {
+		if (direcciones == null)
+			direcciones = new ArrayList<>();
+		direcciones.remove(direccion);
+	}
+	
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellidos=" + apellidos

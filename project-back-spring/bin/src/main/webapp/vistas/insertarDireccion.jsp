@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>FORMULARIO PARA AÑADIR UNA NUEVA DIRECCIÓN</h1>
-	<form action="" method="post">
+	<form action="usuario/direccion/darAltaDireccion" method="post">
 		<p><input type="text" name="codigoPostal">CP: </p>
 		<p><input type="text" name="localidad">Localidad: </p>
 		<p><input type="text" name="calle">Calle: </p>
