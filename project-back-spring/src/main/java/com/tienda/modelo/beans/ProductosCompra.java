@@ -1,6 +1,8 @@
 package com.tienda.modelo.beans;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 
 
@@ -17,7 +19,7 @@ public class ProductosCompra implements Serializable {
 	@EmbeddedId
 	private ProductosCompraPK id;
 
-	private float precio;
+	private BigDecimal precio;
 
 	private int unidades;
 
@@ -42,11 +44,11 @@ public class ProductosCompra implements Serializable {
 		this.id = id;
 	}
 
-	public float getPrecio() {
+	public BigDecimal getPrecio() {
 		return this.precio;
 	}
 
-	public void setPrecio(float precio) {
+	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
 

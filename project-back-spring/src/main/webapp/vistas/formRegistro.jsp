@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="nav.jsp"></jsp:include>
 	<br>
 	<h3>REGÍSTRATE</h3>
 	<h1>${mensaje }</h1>

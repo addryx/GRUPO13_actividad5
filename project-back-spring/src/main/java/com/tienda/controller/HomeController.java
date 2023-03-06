@@ -59,11 +59,6 @@ public class HomeController {
 		return "usuarios";
 	}
 
-	@GetMapping("/login")
-	public String procesarLogin(Authentication aut, Model model, HttpSession misesion) {
-		return null;
-	}
-
 	@GetMapping("/registro")
 	public String registrar(Model model) {
 		return "formRegistro";

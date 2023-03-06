@@ -36,7 +36,6 @@ public class CompraDaoImplMy8 implements IntCompraDao  {
 	//Método que procesa una compra, no sé como desarrollarlo. 
 	@Override
 	public Compra procesarCompra(Compra compra) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

@@ -24,7 +24,7 @@ public class DireccionRestController {
 	 */
 	
 	@GetMapping("/cantidad")
-    public List<Direccione> verPrecioProducto() {
+    public List<Direccione> verClientesPorLocalidad() {
         return ddao.clientesPorLocalidad();
     }
 }

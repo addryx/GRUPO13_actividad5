@@ -14,7 +14,7 @@
 </head>
 <body>
 
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="nav.jsp"></jsp:include>
 
 	<div class="container">
 		<h1 class="text-primary">Datos del producto</h1>

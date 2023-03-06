@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="nav.jsp"></jsp:include>
 
 	<h3>EDITAR PRODUCTO</h3>
 	<form action="/producto/editar" method="post">
