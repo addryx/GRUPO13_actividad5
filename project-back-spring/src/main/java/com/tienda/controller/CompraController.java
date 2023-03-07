@@ -54,6 +54,8 @@ public class CompraController {
 		// Hay que desarrollar este método en la Impl del DAO.
 		cdao.procesarCompra(c);
 		
+		return null;
+		
 	}
 	
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>FORMULARIO PARA DAR DE ALTA UNA NUEVA TARJETA</h1>
-	<form action="" method="post">
+	<form action="usuario/tarjeta/darAltaTarjeta" method="post">
 		<p><input type="number" name="numeroTarjeta">Número de la tarjeta: </p>
 		<p><input type="text" name="nombreTitular">Nombre del titular: </p>
 		<p><input type="date" name="fechaCaducidad">Fecha de caducidad: </p>

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.tienda.modelo.beans.Direccione;
+import com.tienda.modelo.beans.Tarjeta;
 import com.tienda.modelo.beans.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
@@ -17,4 +19,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 			+ "group by u.nombre;", nativeQuery = true)
 	List<Usuario> datosUsuario(int idUsuario);
 	
+	//Estos metodos se han añadido para meter direcciones y tarjetas
+	
+	@Query("select u.tarjetas from Usuario u where u.idUsuario=?1")
+	List<Tarjeta> tarjetaUsuario(int idUsuario);
+	
+	@Query("select u.direciones from Usuario u where u.idUsuario=?1")
+	List<Direccione> direccionesUsuario(int idUsuario);
 }
