@@ -104,9 +104,10 @@ public class UsuarioController {
 	@PostMapping("/darAltaTarjeta")
 	public void altaTarjeta(Model model, Tarjeta tarjeta, HttpSession sesion,
 			@RequestParam("idUsuario") int idUsuario) {
+		
 		Usuario usuario = urepo.buscarUno(idUsuario);
 		usuario.addTarjeta(tarjeta);
-		urepo.save(usuario);
+		//urepo.save(usuario);
 	}
 
 	// Añadir direcciones
@@ -118,8 +119,9 @@ public class UsuarioController {
 	@PostMapping("/darAltaDireccion")
 	public void altaDireccion(Model model, Direccione direccion, HttpSession sesion,
 			@RequestParam("idUsuario") int idUsuario) {
+		
 		Usuario usuario = urepo.buscarUno(idUsuario);
 		usuario.addDireccion(direccion);
-		urepo.save(usuario);
+		//urepo.save(usuario);
 	}
 }
