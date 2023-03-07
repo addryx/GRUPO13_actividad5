@@ -21,7 +21,6 @@ public class DataUserConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// TODO Auto-generated method stub
 		auth.jdbcAuthentication().dataSource(dataSource)
 				.usersByUsernameQuery("select email, contrasena, enabled from Usuarios where email=?")
 				.authoritiesByUsernameQuery("select u.email, r.nombre_rol from Usuario_Roles up "
@@ -31,7 +30,6 @@ public class DataUserConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// TODO Auto-generated method stub
 		http.csrf().disable().authorizeRequests()
 				// Los directorios estáticos no requieren autenticacion
 				.antMatchers("/bootstrap/**", "/images/**", "/css/**", "js/**").permitAll()

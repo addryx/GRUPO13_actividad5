@@ -3,11 +3,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Tarjetas</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -15,38 +16,35 @@
 </head>
 <body>
 
-	<jsp:include page="inicio.jsp"></jsp:include>
+	<jsp:include page="nav.jsp"></jsp:include>
 
 	<div class="container">
-		<h1 class="text-primary">Lista de productos</h1>
-		<sec:authorize access="hasAnyAuthority('ROLE_GESTOR','ROLE_ADMINISTRADOR')">
-			<a href="/app/producto/alta" class="btn btn-primary btn-sm">Nuevo Producto</a>
-		</sec:authorize>
-		
-		<table class="table table-striped table-sm">
-			<tr>
-				<th>Id</th>
-				<th>Descripcion</th>
-				<th>Opciones</th>
-			</tr>
+		<br>
+		<h1 class="text-primary">Listado de tarjetas</h1>
+		<h1>${mensaje }</h1>
 
-			<c:forEach var="ele" items="${listaTodos }">
+			<br>
+			<a href="/producto/alta" class="btn btn-primary btn-sm">Nueva tarjeta</a>
+			<br>
+			<br>
+
+		<table class="table table-striped table-sm">
+			<th>Id tarjeta</th>
+			<th>Número tarjeta</th>
+			<th>Titular</th>
+			<th>Fecha de caducidad</th>
+			<th>CVV</th>
+			<c:forEach var="ele" items="${listaTodasTarjetas }">
 				<tr>
-					<td>${ele.codigo }</td>
-					<td>${ele.descripcion }</td>
-					<td>
-						<a href="/app/producto/verUno/${ele.codigo}" class="btn btn-success btn-sm">Ver detalle</a> 
-						<sec:authorize access="hasAnyAuthority('ROLE_GESTOR','ROLE_ADMINISTRADOR')">
-							<a href="/app/producto/editar/${ele.codigo}" class="btn btn-success btn-sm">Modificar</a>
-							<a href="/app/producto/eliminar/${ele.codigo}" class="btn btn-danger btn-sm">Eliminar</a>
-						</sec:authorize>
-					</td>
-						
+					<td>${ele.idTarjeta }</td>
+					<td>${ele.numeroTarjeta }</td>
+					<td>${ele.nombreTitular }</td>
+					<td>${ele.fechaCaducidad }</td>
+					<td>${ele.cvv }</td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
-	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
@@ -59,4 +57,5 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 </body>
+
 </html>

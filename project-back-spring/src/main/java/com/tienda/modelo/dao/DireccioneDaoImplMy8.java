@@ -15,6 +15,11 @@ public class DireccioneDaoImplMy8 implements IntDireccioneDao{
 	DireccioneRepository drepo;
 	
 	@Override
+	public List<Direccione> buscarTodos() {
+		return drepo.findAll();
+	}
+	
+	@Override
 	public int registrarDireccion(Direccione direccione) {
 		int filas = 0;
 		try {

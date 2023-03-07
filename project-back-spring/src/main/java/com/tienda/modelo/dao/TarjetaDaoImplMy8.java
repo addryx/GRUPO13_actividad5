@@ -1,5 +1,7 @@
 package com.tienda.modelo.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,11 @@ public class TarjetaDaoImplMy8 implements IntTarjetaDao {
 	
 	@Autowired
 	TarjetaRepository trepo;
+	
+	@Override
+	public List<Tarjeta> buscarTodos() {
+		return trepo.findAll();
+	}
 	
 	@Override
 	public int registrarTarjeta(Tarjeta tarjeta) {
@@ -37,4 +44,5 @@ public class TarjetaDaoImplMy8 implements IntTarjetaDao {
 		}
 		return filas;
 	}
+
 }
