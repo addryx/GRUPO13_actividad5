@@ -20,6 +20,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	List<Usuario> datosUsuario(int idUsuario);
 	
 	//Estos metodos se han añadido para meter direcciones y tarjetas
+	
 	@Query("select u.tarjetas from Usuario u where u.idUsuario=?1")
 	List<Tarjeta> tarjetaUsuario(int idUsuario);
 	
