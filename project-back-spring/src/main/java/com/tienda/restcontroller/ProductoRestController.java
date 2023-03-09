@@ -34,12 +34,4 @@ public class ProductoRestController {
         return pdao.precioProducto(idProducto);
     }
 	
-	/*
-	 * Prueba para ver que sale como listado de esta query
-	 */
-	@GetMapping("/prueba/{id}")
-    public List<Usuario> prueba(@PathVariable("id") int idUsuario) {
-		return udao.datosUsuario(idUsuario);
-    }
-	
 }

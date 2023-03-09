@@ -45,6 +45,7 @@ public class DireccioneDaoImplMy8 implements IntDireccioneDao{
 		return filas;
 	}
 
+	/*
 	@Override
 	public List<Direccione> clientesPorLocalidad() {
 		try {
@@ -55,4 +56,5 @@ public class DireccioneDaoImplMy8 implements IntDireccioneDao{
         }
 		
 	}
+	*/
 }

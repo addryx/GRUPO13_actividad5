@@ -11,6 +11,6 @@ public interface IntUsuarioDao {
 	int altaUsuario(Usuario usuario);
 	int bajaUsuario (int idUsuario);
 	int modificarUsuario(Usuario usuario);
-	List<Usuario> datosUsuario(int idUsuario);
+	// List<Usuario> datosUsuario(int idUsuario);
 	
 }

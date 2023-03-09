@@ -72,6 +72,7 @@ public class UsuarioController {
 		}
 	}
 
+	/*
 	@GetMapping("/ver/{id}")
 	public String verDatosUsuario(Model model, @PathVariable(name = "id") int idUsuario) {
 		Usuario usuario = udao.buscarUno(idUsuario);
@@ -80,6 +81,7 @@ public class UsuarioController {
 		model.addAttribute("datosUsuario", lista);
 		return "datosUsuario";
 	}
+	*/
 
 	@GetMapping("/eliminar/{id}")
 	public String eliminarUsuario(Model model, @PathVariable(name = "id") int idUsuario) {

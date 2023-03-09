@@ -22,9 +22,10 @@ public class DireccionRestController {
 	/*
 	 * Listado de cuantos clientes de cada provincia tenemos en nuestra BBDD de clientes.
 	 */
-	
+	/*
 	@GetMapping("/cantidad")
     public List<Direccione> verClientesPorLocalidad() {
         return ddao.clientesPorLocalidad();
     }
+    */
 }
