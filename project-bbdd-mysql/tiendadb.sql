@@ -108,11 +108,11 @@ INSERT INTO Roles (nombre_rol) VALUES ('ROLE_CLIENTE'), ('ROLE_ADMON');
 
 -- Tabla usuarios
 INSERT INTO usuarios (nombre, apellidos, fecha_nacimiento, email, contrasena)
-VALUES ('Juan', 'Pérez', '1995-01-01', 'juan.perez@email.com', 'contrasena1'),
-       ('María', 'González', '1996-02-02', 'maria.gonzalez@email.com', 'contrasena2'),
-       ('Pedro', 'Rodríguez', '1997-03-03', 'pedro.rodriguez@email.com', 'contrasena3'),
-       ('Ana', 'Martínez', '1998-04-04', 'ana.martinez@email.com', 'contrasena4'),
-       ('Luis', 'Sánchez', '1999-05-05', 'luis.sanchez@email.com', 'contrasena5');
+VALUES ('Juan', 'Pérez', '1995-01-01', 'juan.perez@email.com', '$2a$10$PsTDhR6oyNx9dIiMz2AFnuXTrhowntBV.m2ACQc1XIC.F91G.pfDO'),
+       ('María', 'González', '1996-02-02', 'maria.gonzalez@email.com', '$2a$10$JUruTt9AsTJW8WefU6ptEOaEdZ22XCed3eJged/t/oOJOklWFTrZa'),
+       ('Pedro', 'Rodríguez', '1997-03-03', 'pedro.rodriguez@email.com', '$2a$10$S6uMFCgdAiKcuro.WPp7feo.7PtXpRNyBAAPeo4LhMUW.Cm.b7Ps2'),
+       ('Ana', 'Martínez', '1998-04-04', 'ana.martinez@email.com', '$2a$10$BGPZb1TKFZ9hm7zUJIqIseRsRW.ElEqMuUgosNBulUXX6HaMRsLh6'),
+       ('Luis', 'Sánchez', '1999-05-05', 'luis.sanchez@email.com', '$2a$10$sSjzI00sQ/0zFIgQx241sOOH8EZ.OeFndgVRAGm0SQQLaLsIZ.nuG');
        
 -- Tabla direcciones
 INSERT INTO direcciones (codigo_postal, localidad, calle, numero, piso, letra)
